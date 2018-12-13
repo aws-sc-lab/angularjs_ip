@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://ehg8f3d2h4.execute-api.ap-southeast-1.amazonaws.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+
+  }
+}
