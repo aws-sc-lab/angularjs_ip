@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,33 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   result: Awsinfo;
+  headers: string[];
+  ip: Object;
 
-  ngOnInit(): void {
-    this.http.get<Awsinfo>('/api/default/awsassignment3demo').subscribe(value => this.result = value);
+  getResponse(): Observable<HttpResponse<Awsinfo>> {
+    return this.http.get<Awsinfo>(
+      '/dev/ip-collector', {observe: 'response'});
   }
 
-  title = 'helloworld';
+
+  ngOnInit(): void {
+
+    this.http.get('/dev/ip-collector').subscribe((ipOfNetwork) => {
+      this.ip = ipOfNetwork;
+    });
+    this.getResponse()
+      .subscribe(resp => {
+        // display its headers
+        const keys = resp.headers.keys();
+        this.headers = keys.map(key =>
+          `${key}: ${resp.headers.get(key)}`);
+
+        // access the body directly, which is typed as `Config`.
+        this.result = {...resp.body};
+      });
+    ;
+  }
+
 
   constructor(private http: HttpClient) {
   }
@@ -21,5 +43,5 @@ export class AppComponent implements OnInit {
 
 class Awsinfo {
   sourceIp: string;
-  remoteIp: string;
+  serverIp: string;
 }

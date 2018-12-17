@@ -1,9 +1,9 @@
 {
-  "/api": {
-    "target": "https://ehg8f3d2h4.execute-api.ap-southeast-1.amazonaws.com",
+  "/dev": {
+    "target": "https://d3ewm9shokoss4.cloudfront.net",
     "secure": false,
     "pathRewrite": {
-      "^/api": ""
+      "^/apis": ""
     },
     "changeOrigin": true
 
