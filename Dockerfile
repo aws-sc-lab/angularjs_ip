@@ -1,2 +1,2 @@
 FROM nginx
-COPY ./dist/helloworld /usr/share/nginx/html
+COPY ./dist/ipcollector /usr/share/nginx/html

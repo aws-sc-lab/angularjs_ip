@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "helloworld": {
+    "ipcollector": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/helloworld",
+            "outputPath": "dist/ipcollector",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,19 +57,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "helloworld:build",
+            "browserTarget": "ipcollector:build",
             "proxyConfig": "aws_proxy.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "helloworld:build:production"
+              "browserTarget": "ipcollector:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "helloworld:build"
+            "browserTarget": "ipcollector:build"
           }
         },
         "test": {
@@ -103,7 +103,7 @@
         }
       }
     },
-    "helloworld-e2e": {
+    "ipcollector-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -112,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "helloworld:serve"
+            "devServerTarget": "ipcollector:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "helloworld:serve:production"
+              "devServerTarget": "ipcollector:serve:production"
             }
           }
         },
@@ -132,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "helloworld"
+  "defaultProject": "ipcollector"
 }

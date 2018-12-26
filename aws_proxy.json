@@ -1,6 +1,6 @@
 {
   "/dev": {
-    "target": "https://d3ewm9shokoss4.cloudfront.net",
+    "target": "https://d1bgswyuzidoub.cloudfront.net",
     "secure": false,
     "pathRewrite": {
       "^/apis": ""

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -13,16 +13,21 @@ export class AppComponent implements OnInit {
   ip: Object;
 
   getResponse(): Observable<HttpResponse<Awsinfo>> {
+
+
     return this.http.get<Awsinfo>(
-      '/dev/ip-collector', {observe: 'response'});
+      '/dev/ip-collector-v1', {
+        observe: 'response', headers: new HttpHeaders({
+          'api_token': '2fdde7b21b6a4a4fb5fbe47475a36dcc',
+          'Content-Type': 'application/json'
+        })
+      });
   }
 
 
   ngOnInit(): void {
 
-    this.http.get('/dev/ip-collector').subscribe((ipOfNetwork) => {
-      this.ip = ipOfNetwork;
-    });
+
     this.getResponse()
       .subscribe(resp => {
         // display its headers
@@ -33,7 +38,6 @@ export class AppComponent implements OnInit {
         // access the body directly, which is typed as `Config`.
         this.result = {...resp.body};
       });
-    ;
   }
 
 
